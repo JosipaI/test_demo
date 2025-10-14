@@ -15,7 +15,7 @@ function showLoginForm(show, username) {
     }
 }
 
-const serverUri = "http://127.0.0.1:4071";
+const serverUri = "https://test-demo-ohoo.onrender.com:4071";
 
 function logout() {
     document.getElementById('content').innerHTML = '';

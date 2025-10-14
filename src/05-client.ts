@@ -11,8 +11,8 @@ app.get('/', function (req, res) {
 });
 
 
-const hostname = '127.0.0.1';
+const hostname = 'test-demo-ohoo.onrender.com';
 const port = 4072;
 app.listen(port, hostname, () => {
-  console.log(`SPA hosted at http://${hostname}:${port}/`);
+  console.log(`SPA hosted at https://${hostname}:${port}/`);
 });

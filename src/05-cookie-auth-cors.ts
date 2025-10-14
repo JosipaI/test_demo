@@ -3,7 +3,7 @@ import cors from 'cors';
 import express from 'express';
 
 const app = express();
-app.use(cors({credentials: true, origin: 'http://127.0.0.1:4072'}));
+app.use(cors({credentials: true, origin: 'https://test-demo-ohoo.onrender.com:4072'}));
 app.use(express.json());
 
 auth.initCookieAuth(app, 'login');
@@ -50,8 +50,8 @@ app.get('/protected', function (req, res) {
     }         
 });
 
-const hostname = '127.0.0.1';
+const hostname = 'test-demo-ohoo.onrender.com';
 const port = 4071;
 app.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+  console.log(`Server running at https://${hostname}:${port}/`);
 });
