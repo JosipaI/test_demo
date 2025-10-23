@@ -1,7 +1,7 @@
 {
   "scripts": {
     "clean": "shx rm -rf dist",
-    "start": "concurrently --kill-others \"npm:client\" \"npm:web-service\""
+    "start": "node server.js"
   },
   "dependencies": {
     "connect-pg-simple": "6.1.0",
