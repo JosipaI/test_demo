@@ -1,7 +1,8 @@
 {
   "scripts": {
     "clean": "shx rm -rf dist",
-    "start": "node server.js"
+    "start": "node server.js",
+    "initdb": "node db/init_db.js"
   },
   "dependencies": {
     "connect-pg-simple": "6.1.0",
