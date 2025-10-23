@@ -1,12 +1,7 @@
 {
   "scripts": {
-    "build": "npm run clean && tsc && npm run copy-views && npm run copy-public",
     "clean": "shx rm -rf dist",
-    "copy-views": "shx cp -r src/views/ dist",
-    "copy-public": "shx cp -r src/public/ dist/public",
-    "start": "concurrently --kill-others \"npm:client\" \"npm:web-service\"",
-    "client": "node dist/05-client.js",
-    "web-service": "node dist/05-cookie-auth-cors.js"
+    "start": "concurrently --kill-others \"npm:client\" \"npm:web-service\""
   },
   "dependencies": {
     "cookie-parser": "^1.4.5",
