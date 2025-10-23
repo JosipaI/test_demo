@@ -1,3 +1,6 @@
+const db = require('./index');
+
+
 const createSessionTable = `
 CREATE TABLE IF NOT EXISTS "session" (
   "sid" varchar NOT NULL COLLATE "default",
