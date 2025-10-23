@@ -3,7 +3,7 @@ const {Pool} = require('pg');
 const pool = new Pool({
     user: process.env.DB_USER,
     host: process.env.DB_HOST,
-    database: 'web2-zad1',
+    database: 'dbname_2szl',
     password: process.env.DB_PASSWORD,
     port: 5432,
     ssl: { rejectUnauthorized: false }
