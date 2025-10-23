@@ -14,7 +14,7 @@ const strategy = new Auth0Strategy(
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL: 'https://test-demo.onrender.com/callback',
+    callbackURL: 'https://test-demo-ohoo.onrender.com/callback',
   },
   (accessToken, refreshToken, extraParams, profile, done) => {
     return done(null, profile);
@@ -51,7 +51,7 @@ app.get(
 app.get('/logout', (req, res, next) => {
   req.logout(err => {
     if (err) return next(err);
-    const returnTo = encodeURIComponent('https://test-demo.onrender.com');
+    const returnTo = encodeURIComponent('https://test-demo-ohoo.onrender.com');
     const logoutURL = `https://${process.env.AUTH0_DOMAIN}/v2/logout?client_id=${process.env.AUTH0_CLIENT_ID}&returnTo=${returnTo}`;
     res.redirect(logoutURL);
   });
