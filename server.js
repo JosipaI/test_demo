@@ -37,6 +37,9 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
 // Auth routes
 app.get('/login', passport.authenticate('auth0', { scope: 'openid profile email' }));
 
