@@ -58,7 +58,9 @@ app.get('/logout', (req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-  res.send(req.user ? `Welcome, ${req.user.displayName || req.user.nickname}` : 'You are not logged in');
+  res.render('landing', {
+    user: req.user || null
+  });
 });
 
 app.listen(3000, () => console.log('Server running on port 3000'));

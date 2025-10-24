@@ -15,6 +15,16 @@
 <main class="main">
     <section class="section">
         <h1>First try of LAB1</h1>
+
+        <p>
+        <% if (user) { %>
+            <h3>Welcome, <%= user.displayName || user.nickname %>!</h3>
+            <a href="/logout">Logout</a>
+        <% } else { %>
+            <h3>You are not logged in.</h3>
+            <a href="/login">Login</a>
+        <% } %>
+        </p>
     </section> 
 </main>
 
