@@ -30,7 +30,7 @@ router.post('/close', async (req, res) => {
 
     const randomNumbers = Array.from({ length: 45 }, (_, i) => i + 1).sort(() => 0.5 - Math.random()).slice(0, 6).sort((a, b) => a - b);
 
-    await pool.query(`UPDATE rounds SET is_active = FALSE, creation_time = NOW(), numbers = $1 WHERE is_active = TRUE`,[randomNumbers]);
+    const newLocal = await pool.query(`UPDATE rounds SET is_active = FALSE, creation_time = NOW(), numbers = $1 WHERE is_active = TRUE`,[randomNumbers]);
 
     return res.sendStatus(204).json({ message: 'Kolo je zatvoreno' });
 
