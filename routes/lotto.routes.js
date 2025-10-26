@@ -56,7 +56,7 @@ router.post('/store-results', async (req, res) => {
     }
 
     const round = lastClosedRound.rows[0];
-    if (round.draw_numbers) {
+    if (round.numbers) {
       return res.status(400).json({ error: 'Rezultati ovog kola su spremljeni' });
     }
 
