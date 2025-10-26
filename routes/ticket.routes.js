@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
 
     // Spremanje u bazu
     await db.pool.query(
-      'INSERT INTO tickets (ticket_id, user_id, numbers, user_email, creation_time) VALUES ($1, $2, $3, $4, $5)',
+      'INSERT INTO tickets (id, user_id, numbers, user_email, creation_time) VALUES ($1, $2, $3, $4, $5)',
       [ticketId, user_id, numbers, user_email, date]
     );
 
@@ -54,7 +54,7 @@ router.post('/', async (req, res) => {
 router.get('/:ticketId', async (req, res) => {
   try {
     const { ticketId } = req.params;
-    const result = await db.pool.query('SELECT * FROM tickets WHERE ticket_id = $1', [ticketId]);
+    const result = await db.pool.query('SELECT * FROM tickets WHERE id = $1', [ticketId]);
     found_rows = result.rows
     if (found_rows.length === 0) {
       return res.status(404).send('Nema listica');
@@ -64,7 +64,7 @@ router.get('/:ticketId', async (req, res) => {
     tick_numbs = ticket.numbers.split(',').map(n => parseInt(n, 10));
 
     res.render('qr_show', {
-      ticketId: ticket.ticket_id,
+      ticketId: ticket.id,
       numbers: tick_numbs,
       qrCodeDataUrl: null, 
       user: req.user || null
