@@ -6,12 +6,14 @@ const router = express.Router();
 router.post('/new-round', async (req, res) => {
   try {
     const active = await pool.query('SELECT rounds_id FROM rounds WHERE is_active = TRUE');
-    if (!active.rowCount) {
-      await pool.query('INSERT INTO rounds (is_active) VALUES (TRUE)');
+
+    if (active.rowCount > 0) {
+        return res.status(204).send();
+    }
+        
+    await pool.query('INSERT INTO rounds (is_active) VALUES (TRUE)');
     console.log("Pokrenuto kolo")
     res.status(200).json({ message: 'Pokrenuto je novo kolo' });
-    }
-    return res.status(204).send();
     
   } catch (e) {
     console.error("Kolo se nije uspjelo pokrenuti:", e);
