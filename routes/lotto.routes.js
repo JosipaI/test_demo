@@ -8,6 +8,7 @@ router.post('/new-round', async (req, res) => {
     const active = await pool.query('SELECT rounds_id FROM rounds WHERE is_active = TRUE');
     if (!active.rowCount) {
       await pool.query('INSERT INTO rounds (is_active) VALUES (TRUE)');
+    console.log("Pokrenuto kolo")
     res.status(200).json({ message: 'Pokrenuto je novo kolo' });
     }
     return res.status(204).send();
@@ -21,10 +22,10 @@ router.post('/new-round', async (req, res) => {
 router.post('/close', async (req, res) => {
   try {
     const result = await pool.query('UPDATE rounds SET is_active = FALSE WHERE is_active = TRUE');
-    if (result.rowCount > 0) {
-        res.status(200).json({ message: 'Kolo je zatvoreno' });
+    if (result.rowCount === 0) {
+        return res.status(204).send();
     }
-    return res.status(204).send();
+    res.status(200).json({ message: 'Kolo je zatvoreno' });
   } catch (e) {
     console.error(e);
     res.status(500).send('Kvar na serveru');
