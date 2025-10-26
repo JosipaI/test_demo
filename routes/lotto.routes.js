@@ -27,7 +27,20 @@ router.post('/close', async (req, res) => {
     if (result.rowCount === 0) {
         return res.status(204).send();
     }
-    res.status(200).json({ message: 'Kolo je zatvoreno' });
+
+    const randomNumbers = Array.from({ length: 45 }, (_, i) => i + 1).sort(() => 0.5 - Math.random()).slice(0, 6).sort((a, b) => a - b);
+
+    await db.pool.query(
+    `UPDATE rounds
+    SET active = FALSE,
+        creation_time = NOW(),
+        numbers = $1
+    WHERE active = TRUE`,
+    [randomNumbers]
+    );
+
+    return res.sendStatus(204).json({ message: 'Kolo je zatvoreno' });
+
   } catch (e) {
     console.error(e);
     res.status(500).send('Kvar na serveru');
