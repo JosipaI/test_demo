@@ -8,6 +8,8 @@ const db = require('./db');
 require('dotenv').config();
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const strategy = new Auth0Strategy(
   {
@@ -65,5 +67,11 @@ app.get('/', (req, res) => {
     user: req.user || null
   });
 });
+
+const ticketsRoutes = require('./routes/ticket.routes');
+app.use('/', ticketsRoutes);
+
+const roundsRoutes = require('./routes/lotto.routes');
+app.use('/', roundsRoutes);
 
 app.listen(3000, () => console.log('Server running on port 3000'));

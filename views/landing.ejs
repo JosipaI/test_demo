@@ -24,6 +24,29 @@
             <a href="/login">Login</a>
         <% } %>
         </p>
+
+        <h2>Kontrola kola</h2>
+        <form action="/new-round" method="post">
+        <button type="submit">Otvori novo kolo</button>
+        </form>
+
+        <form action="/close" method="post">
+        <button type="submit">Zatvori kolo</button>
+        </form>
+
+        <form action="/store-results" method="post">
+        <input type="text" name="numbers" placeholder="Brojevi odvojeni zarezima" />
+        <button type="submit">Spremi rezultate</button>
+        </form>
+        <% if (round) { %>
+        <p>Kolo ID: <%= round.id %> — <%= round.is_active ? "AKTIVNO" : "ZATVORENO" %></p>
+        <p>Broj uplaćenih listića: <%= ticketCount %></p>
+        <% if (round.draw_numbers) { %>
+            <p>Izvučeni brojevi: <%= round.draw_numbers %></p>
+        <% } %>
+        <% } else { %>
+        <p>Još nema podataka o kolima.</p>
+        <% } %>
     </section> 
 </main>
 
