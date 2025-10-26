@@ -17,7 +17,8 @@
     "pug": "^3.0.2",
     "typescript": "^5.1.6",
     "uuid": "^9.0.0",
-    "qrcode": "^1.5.3"
+    "qrcode": "^1.5.3",
+    "node-cron": "^3.0.3"
 
   },
   "devDependencies": {

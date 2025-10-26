@@ -42,7 +42,15 @@ router.post('/close', async (req, res) => {
 
 router.post('/store-results', async (req, res) => {
   try {
-    const { numbers } = req.body;
+    const { numbers, oib } = req.body;
+
+    if (!oib) {
+      return res.status(400).json({ error: 'Unesite OIB ili broj putovnice.' });
+    }
+
+    if (oib.length != 20) {
+      return res.status(400).json({ error: 'OIB ili broj putovnice mora imati 20 znakova.' });
+    }
 
     if (!numbers) {
       return res.status(400).json({ error: 'Unesite brojeve.' });

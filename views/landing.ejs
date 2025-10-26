@@ -26,16 +26,11 @@
         </p>
 
         <h2>Kontrola kola</h2>
-        <form action="/new-round" method="post">
-        <button type="submit">Otvori novo kolo</button>
-        </form>
-
-        <form action="/close" method="post">
-        <button type="submit">Zatvori kolo</button>
-        </form>
 
         <form action="/store-results" method="post">
-        <input type="text" name="numbers" placeholder="Brojevi odvojeni zarezima" />
+        <input type="text" name="numbers" placeholder="Brojevi odvojeni zarezima:" />
+        <input type="text" name="oib" placeholder="Broj OIB-a ili putovnice:" />
+
         <button type="submit">Spremi rezultate</button>
         </form>
 
