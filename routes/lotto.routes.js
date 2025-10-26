@@ -36,6 +36,9 @@ router.post('/store-results', async (req, res) => {
     const { numbers } = req.body;
 
     if (numbers.length == 0 || !Array.isArray(numbers)) {
+      return res.status(400).json({ error: 'Unesite brojeve.' });
+    }
+    if (!Array.isArray(numbers)) {
       return res.status(400).json({ error: 'Nije uneseno polje brojeva!' });
     }
 
