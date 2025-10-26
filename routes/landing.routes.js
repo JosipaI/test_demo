@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 
   let ticketCount = 0;
   if (activeRound) {
-    const result = await pool.query('SELECT COUNT(*) FROM tickets WHERE round_id = $1', [activeRound.id]);
+    const result = await pool.query('SELECT COUNT(*) FROM tickets WHERE rounds_id = $1', [activeRound.rounds_id]);
     ticketCount = result.rows[0].count;
   }
 
