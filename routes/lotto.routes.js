@@ -48,7 +48,7 @@ router.post('/store-results', async (req, res) => {
       SELECT rounds_id, numbers 
       FROM rounds 
       WHERE is_active = FALSE 
-      ORDER BY id DESC 
+      ORDER BY rounds_id DESC 
       LIMIT 1
     `);
     if (!lastClosedRound) {
