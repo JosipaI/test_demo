@@ -39,13 +39,13 @@ router.post('/store-results', async (req, res) => {
       return res.status(400).json({ error: 'Unesite brojeve.' });
     }
     const numbersArray = numbers.split(',').map(n => parseInt(n, 10));
-    
+
     if (!Array.isArray(numbersArray)) {
       return res.status(400).json({ error: 'Nije uneseno polje brojeva!' });
     }
 
     const lastClosedRound = await pool.query(`
-      SELECT id, draw_numbers 
+      SELECT rounds_id, numbers 
       FROM rounds 
       WHERE is_active = FALSE 
       ORDER BY id DESC 
