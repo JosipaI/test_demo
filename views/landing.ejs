@@ -38,15 +38,7 @@
         <input type="text" name="numbers" placeholder="Brojevi odvojeni zarezima" />
         <button type="submit">Spremi rezultate</button>
         </form>
-        <% if (rounds) { %>
-        <p>Kolo ID: <%= rounds.rounds_id %> — <%= rounds.is_active ? "AKTIVNO" : "ZATVORENO" %></p>
-        <p>Broj uplacenih listica: <%= ticketCount %></p>
-        <% if (rounds.numbers) { %>
-            <p>Izvuceni brojevi: <%= rounds.numbers %></p>
-        <% } %>
-        <% } else { %>
-        <p>Jos nema podataka o kolima.</p>
-        <% } %>
+
     </section> 
 </main>
 
