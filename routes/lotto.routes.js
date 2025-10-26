@@ -79,8 +79,13 @@ router.post('/store-results', async (req, res) => {
       return res.status(400).json({ error: 'Rezultati ovog kola su spremljeni' });
     }
     console.log("HEREEEEEEEE 1111111111111")
-    const newLocal = await pool.query('UPDATE rounds SET numbers = $1 WHERE rounds_id = $2', [numbersArray.join(','), round.rounds_id]);
+    new_numbers = numbersArray.join(',')
+    console.log(new_numbers)
+    console.log(round.rounds_id)
     console.log("HEREEEEEEEE 2222222222222")
+
+    const newLocal = await pool.query('UPDATE rounds SET numbers = $1 WHERE rounds_id = $2', [new_numbers, round.rounds_id]);
+    console.log("HEREEEEEEEE 3333333333333")
     
     res.status(204).send();
   } catch (e) {
