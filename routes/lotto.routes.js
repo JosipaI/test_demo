@@ -51,7 +51,7 @@ router.post('/store-results', async (req, res) => {
       ORDER BY rounds_id DESC 
       LIMIT 1
     `);
-    if (lastClosedRound.length === 0) {
+    if (lastClosedRound.rowCount === 0) {
       return res.status(400).json({ error: 'Nije zatvoreno kolo' });
     }
 
