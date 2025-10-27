@@ -73,18 +73,22 @@ router.post('/store-results', async (req, res) => {
     }
 
     const round = lastClosedRound.rows[0];
-    console.log(round);
-    console.log(lastClosedRound);
+    //console.log(round);
+    //console.log(lastClosedRound);
     if (round.numbers) {
       return res.status(400).json({ error: 'Rezultati ovog kola su spremljeni' });
     }
-    console.log("HEREEEEEEEE 1111111111111");
+    //console.log("HEREEEEEEEE 1111111111111");
     new_numbers = `{${numbersArray.join(",")}}`;
-    console.log(new_numbers);
-    console.log(round.rounds_id);
-    console.log("HEREEEEEEEE 2222222222222")
+    //console.log(new_numbers);
+    //console.log(round.rounds_id);
+    //console.log("HEREEEEEEEE 2222222222222")
 
     const newLocal = await pool.query('UPDATE rounds SET numbers = $1 WHERE rounds_id = $2', [new_numbers, round.rounds_id]);
+    console.log("HEREEEEEEEE 3333333333333")
+    const ticketId = await pool.query('SELECT id FROM tickets WHERE tickets.rounds_id = $1', [round.rounds_id]);
+    console.log("TICKET ID")
+    console.log(ticketId)
     console.log("HEREEEEEEEE 3333333333333")
     
     res.status(204).send();
