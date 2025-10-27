@@ -79,7 +79,7 @@ router.post('/store-results', async (req, res) => {
       return res.status(400).json({ error: 'Rezultati ovog kola su spremljeni' });
     }
     console.log("HEREEEEEEEE 1111111111111");
-    new_numbers = `{${randomNumbers.join(",")}}`;
+    new_numbers = `{${numbersArray.join(",")}}`;
     console.log(new_numbers);
     console.log(round.rounds_id);
     console.log("HEREEEEEEEE 2222222222222")
