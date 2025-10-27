@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Novi listić</title>
+
+</head>
+<body>
+  <h1>Kreiraj novi listić</h1>
+  <form action="/tickets" method="POST">
+    <label>OIB ili Putovnica (20 brojeva):</label>
+    <input type="text" name="oib" maxlength="20" required>
+
+    <label>Brojevi (6 brojeva koji su odvojeni zarezom):</label>
+    <input type="text" name="numbers" placeholder="npr. 2,4,23,33,6,41" required>
+
+    <button type="submit">Pošalji listić</button>
+  </form>
+</body>
+</html>

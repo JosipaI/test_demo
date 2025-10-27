@@ -1,68 +1,25 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Uplata Loto listića</title>
+  <title>Listić <%= ticket.ticket_id %></title>
 
 </head>
 <body>
-  <h1>Uplata Loto listića (6–10 brojeva)</h1>
+  <h1>Listić <%= ticket.ticket_id %></h1>
 
-  <form id="ticketForm" method="POST" action="/api/tickets">
-    <label for="personal_id">Broj osobne iskaznice:</label><br>
-    <input type="text" name="personal_id" id="personal_id" maxlength="20" required><br><br>
+  <p><b>OIB ili putovnica:</b> <%= ticket.oib %></p>
+  <p><b>Brojevi na listicu:</b> <%= ticket.numbers.join(', ') %></p>
+  
+  <% if(round.numbers) { %>
+    <p><b>Izvuceni brojevi u zadnjem kolu:</b> <%= round.numbers.join(', ') %></p>
+  <% } else { %>
+    <p>Rezultati još nisu izvučeni.</p>
+  <% } %>
 
-    <div id="numberGrid">
-      <% for (let i = 1; i <= 45; i++) { %>
-        <button type="button"  data-value="<%= i %>"><%= i %></button>
-      <% } %>
-    </div>
-
-    <!-- Skriveno polje u koje se spremaju odabrani brojevi -->
-    <input type="hidden" name="numbers" id="numbersInput">
-
-    <!-- Možeš po želji dodati e-mail -->
-    <input type="hidden" name="user_email" value="<%= user ? user.emails[0].value : '' %>">
-
-    <button type="submit" >Uplati listić</button>
-  </form>
-
-  <script>
-    const buttons = document.querySelectorAll('.number');
-    const numbersInput = document.getElementById('numbersInput');
-    let selected = [];
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const val = parseInt(btn.dataset.value, 10);
-
-        if (selected.includes(val)) {
-          // Ako je već izabran, poništi odabir
-          selected = selected.filter(n => n !== val);
-          btn.classList.remove('selected');
-        } else {
-          // Ako nije izabran, dodaj ga (ako ima mjesta)
-          if (selected.length >= 10) {
-            alert('Možeš izabrati najviše 10 brojeva.');
-            return;
-          }
-          selected.push(val);
-          btn.classList.add('selected');
-        }
-
-        // Sortiraj i ažuriraj skriveno polje
-        selected.sort((a, b) => a - b);
-        numbersInput.value = selected.join(',');
-      });
-    });
-
-    // Prije slanja provjeri broj izabranih brojeva
-    document.getElementById('ticketForm').addEventListener('submit', (e) => {
-      if (selected.length < 6 || selected.length > 10) {
-        e.preventDefault();
-        alert('Odaberi između 6 i 10 brojeva!');
-      }
-    });
-  </script>
+  <div>
+    <h3>QR kod za ovaj listic:</h3>
+    <img src="/ticket/<%= ticket.ticket_id %>/qrcode" alt="QR kod">
+  </div>
 </body>
 </html>

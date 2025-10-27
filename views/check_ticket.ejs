@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Provjeri svoj listić</title>
+</head>
+<body>
+  <h1>Provjeri svoj listić</h1>
+  <form action="/check-ticket" method="GET">
+    <input type="text" name="ticket_id" placeholder="Unesite Vas kod listica" required>
+    <button type="submit">Prikaži listić</button>
+  </form>
+
+  <% if(error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+</body>
+</html>

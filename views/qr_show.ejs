@@ -1,25 +1,11 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Listic</title>
-  
+  <title>QR kod listica <%= ticket.ticket_id %></title>
 </head>
 <body>
-  <h1>Uplaceni listic</h1>
-  <p>ID listica: <strong><%= ticketId %></strong></p>
-
-  <div>
-    <% numbers.forEach(n => { %>
-      <div><%= n %></div>
-    <% }) %>
-  </div>
-
-  <% if (qrCodeDataUrl) { %>
-    <p> QR kod na tvoj listic:</p>
-    <img src="<%= qrCodeDataUrl %>" alt="QR kod">
-  <% } %>
-
-  <a href="/api/tickets" class="button">Uplati novi listić</a>
+  <h1>QR kod Listića <%= ticket.ticket_id %></h1>
+  <img src="/ticket/<%= ticket.ticket_id %>/qrcode" alt="QR kod">
 </body>
 </html>

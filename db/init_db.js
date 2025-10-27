@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS tickets (
   user_id VARCHAR(20),
   numbers TEXT,
   uuid_code UUID DEFAULT gen_random_uuid(),
-  creation_time TIMESTAMP DEFAULT NOW()
+  creation_time TIMESTAMP DEFAULT NOW(),
+  qr_code bytea
 );
 `;
 

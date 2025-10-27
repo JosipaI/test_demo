@@ -28,10 +28,18 @@
         <h2>Kontrola kola</h2>
 
         <form action="/store-results" method="post">
-        <input type="text" name="numbers" placeholder="Brojevi odvojeni zarezima:" />
+        <input type="text" name="numbers" placeholder="Brojevi:" />
         <input type="text" name="oib" placeholder="Broj OIB-a ili putovnice:" />
 
-        <button type="submit">Spremi rezultate</button>
+        <p>Provjerite svoj listić:</p>
+        <form action="/check-ticket/view" method="GET">
+        <input type="text" name="ticket_id" placeholder="Vas kod listica" required>
+        <button type="submit">Prikaži listić</button>
+        </form>
+
+        <p>ili pogledajte sve dostupne funkcionalnosti:</p>
+        <a href="/new-ticket">Kreiraj novi listić</a>
+        <a href="/rounds">Pregled kola</a>
         </form>
 
     </section> 
