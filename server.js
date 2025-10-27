@@ -75,7 +75,7 @@ app.use('/', ticketsRoutes);
 const roundsRoutes = require('./routes/lotto.routes');
 app.use('/', roundsRoutes);
 
-const BASE_URL = "https://test-demo-ohoo.onrender.com:3000"; 
+const BASE_URL = "https://test-demo-ohoo.onrender.com"; 
 
 let active = false;
 
