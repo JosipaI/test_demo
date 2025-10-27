@@ -15,7 +15,7 @@
 
 <main class="main">
     <section class="section">
-        <h1>First try of LAB1</h1>
+        <h1>Dobrodošli na Loto 6/45</h1>
 
         <p>
         <% if (user) { %>
@@ -32,16 +32,13 @@
         <form action="/store-results" method="post">
         <input type="text" name="numbers" placeholder="Brojevi:" />
         <input type="text" name="oib" placeholder="Broj OIB-a ili putovnice:" />
+        <button type="submit">Pohrani brojeve</button>
 
         <p>Provjerite svoj listić:</p>
         <form action="/check-ticket/view" method="GET">
         <input type="text" name="ticket_id" placeholder="Vas kod listica" required>
         <button type="submit">Prikaži listić</button>
         </form>
-
-        <p>ili pogledajte sve dostupne funkcionalnosti:</p>
-        <a href="/new-ticket">Kreiraj novi listić</a>
-        <a href="/rounds">Pregled kola</a>
         </form>
 
     </section> 
