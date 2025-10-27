@@ -30,12 +30,12 @@ router.post('/', async (req, res) => {
     const ticketId = uuidv4();
     const date = new Date();
 
-    // Spremanje u bazu
     await db.pool.query(
       'INSERT INTO tickets (id, user_id, numbers, user_email, creation_time) VALUES ($1, $2, $3, $4, $5)',
       [ticketId, user_id, numbers, user_email, date]
     );
-
+    console.log("TICKETTTTT")
+    console.log(ticketId)
     const ticketUrl = `https://test-demo-ohoo.onrender.com/api/tickets/${ticketId}`;
     const qrCodeDataUrl = await QRCode.toDataURL(ticketUrl);
 
@@ -51,7 +51,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/:ticketId', async (req, res) => {
+router.get('ticket/:ticketId', async (req, res) => {
   try {
     const { ticketId } = req.params;
     const result = await db.pool.query('SELECT * FROM tickets WHERE id = $1', [ticketId]);
