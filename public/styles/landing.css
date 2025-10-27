@@ -1,0 +1,79 @@
+body {
+    background: url("../images/darkblue_body.jpg");
+    color: white;
+    background-size: cover;
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* Button styling */
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4580a0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4580a0;
+  }
+  
+  .toast {
+    visibility: visible; /* Initially hidden */
+    min-width: 250px;
+    margin-left: 10%; /* Center the toast */
+    background-color: #91c5e4;
+    color: #091a24;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px; /* Position at the bottom */
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+
+  }
+  
+  /* Toast visibility when shown */
+  .toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;  /* Full height of the viewport */
+    text-align: center; /* Center text inside the container */
+    padding: 0px;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    margin: 0;
+    font-size: 3em;
+    font-weight: bold;
+  }
+  
+  p {
+    font-size: 1.2em;
+    margin-top: 10px;
+  }
+
+  .form-group,p {
+    padding: 1%;
+  }
